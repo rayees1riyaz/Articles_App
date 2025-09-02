@@ -45,7 +45,9 @@ end
 def destroy
   @article = Article.find(params[:id])
   @article.destroy
-  redirect_to articles_path, flash[:success] = "Article deleted successfully"
+   redirect_to article_path
+  flash[:success] = "Article deleted successfully"
+ 
 end
 
 end
