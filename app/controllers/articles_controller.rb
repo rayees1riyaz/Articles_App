@@ -24,7 +24,7 @@ def create
   else
     puts @article.errors.full_messages  
     
-    render 'new'
+    render 'new', status: :unprocessable_entity 
   end
 end
 
@@ -37,7 +37,7 @@ end
   else
     puts @article.errors.full_messages
    
-    render 'edit'
+    render 'edit',status: :unprocessable_entity
   end
 end
 
