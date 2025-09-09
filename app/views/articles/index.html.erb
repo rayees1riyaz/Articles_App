@@ -7,13 +7,16 @@
       <th>Title</th>
       <th>Description</th>
       <th>Actions</th>
+      
     </tr>
   </thead>
   <tbody>
     <% @articles.each do |article| %>
+     
       <tr>
-    
+  
         <td data-label="Title"><%= article.name %></td>
+         <%= article.user.name if article.user%>
         <td data-label="Description"><%= article.description %></td>
         <td data-label="Actions">
           <%= link_to "<i class='fas fa-eye'></i> Show".html_safe, article_path(article), class: "action-link" %> |
