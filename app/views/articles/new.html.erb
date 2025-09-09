@@ -1,0 +1,35 @@
+<h1>New Article</h1>
+<%= form_with model: @article, local: true do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, placeholder: "Enter title" %>
+  </div>
+<% if @article.errors[:title].any? %>
+<div style="color: #721c24; margin-right: 110px;">
+    <ul>
+      <li>Title: <%= @article.errors[:title].first %></li>
+    </ul>
+  </div>
+<% end %>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, placeholder: "Enter description", rows: 5 %>
+  </div>
+<% if @article.errors[:description].any? %>
+   <div style="color: #856404; margin-right: 110px;">
+     <ul>
+  <li>Description: <%= @article.errors[:description].first %></li>
+
+    </ul>
+  </div>
+<% end %>
+  <div>
+    <%= form.submit "Create Article" %><div style="color: #721c24; margin-right: 110px;">
+
+  </div>
+<% end %>
+
+<br>
+<%= link_to "Back To All Artciles", articles_path%>
+
+
