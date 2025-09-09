@@ -2,12 +2,12 @@
 <%= form_with model: @article, local: true do |form| %>
   <div>
     <%= form.label :title %><br>
-    <%= form.text_field :title, placeholder: "Enter title" %>
+    <%= form.text_field :name, placeholder: "Enter title" %>
   </div>
 <% if @article.errors[:title].any? %>
   <div style="color: #721c24; margin-right: 110px;">  
     <ul>
-      <li>Title: <%= @article.errors[:title].first %></li>
+      <li>Title: <%= @article.errors[:name].first %></li>
 
     </ul>
   </div>
@@ -19,7 +19,7 @@
   <% if @article.errors[:description].any? %>
   <div style="color: #856404; margin-right: 110px;">
      <ul>
-  <li>Description: <%= @article.errors[:title].first %></li>
+  <li>Description: <%= @article.errors[:description].first %></li>
 
     </ul>
   </div>

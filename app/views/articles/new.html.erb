@@ -4,10 +4,10 @@
     <%= form.label :title %><br>
     <%= form.text_field :name, placeholder: "Enter title" %>
   </div>
-<% if @article.errors[:title].any? %>
+<% if @article.errors[:name].any? %>
 <div style="color: #721c24; margin-right: 110px;">
     <ul>
-      <li>Title: <%= @article.errors[:title].first %></li>
+      <li>Title: <%= @article.errors[:name].first %></li>
     </ul>
   </div>
 <% end %>
