@@ -1,35 +1,46 @@
 <h1>New Article</h1>
+
 <%= form_with model: @article, local: true do |form| %>
+
+  <% if @article.errors[:user].any? %>
+    <div style="color: red; margin-bottom: 10px;">
+      <ul>
+        <li><%= @article.errors[:user].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
-    <%= form.label :title %><br>
+    <%= form.label :name, "Title" %><br>
     <%= form.text_field :name, placeholder: "Enter title" %>
   </div>
-<% if @article.errors[:name].any? %>
-<div style="color: #721c24; margin-right: 110px;">
-    <ul>
-      <li>Title: <%= @article.errors[:name].first %></li>
-    </ul>
-  </div>
-<% end %>
+
+  <% if @article.errors[:name].any? %>
+    <div style="color: #721c24; margin-right: 110px;">
+      <ul>
+        <li>Title: <%= @article.errors[:name].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :description %><br>
     <%= form.text_area :description, placeholder: "Enter description", rows: 5 %>
   </div>
-<% if @article.errors[:description].any? %>
-   <div style="color: #856404; margin-right: 110px;">
-     <ul>
-  <li>Description: <%= @article.errors[:description].first %></li>
 
-    </ul>
-  </div>
-<% end %>
+  <% if @article.errors[:description].any? %>
+    <div style="color: #856404; margin-right: 110px;">
+      <ul>
+        <li>Description: <%= @article.errors[:description].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
-    <%= form.submit "Create Article" %><div style="color: #721c24; margin-right: 110px;">
-
+    <%= form.submit "Create Article" %>
   </div>
+
 <% end %>
 
 <br>
-<%= link_to "Back To All Artciles", articles_path%>
-
-
+<%= link_to "Back To All Articles", articles_path %>

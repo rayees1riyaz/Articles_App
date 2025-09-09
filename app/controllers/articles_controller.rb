@@ -18,6 +18,7 @@ def index
   
 def create
   @article = Article.new(params.require(:article).permit(:name, :description))
+  @article.user = User.first
   if @article.save
     flash[:success] = "Article successfully created"
     redirect_to @article
