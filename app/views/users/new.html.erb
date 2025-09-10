@@ -1,0 +1,49 @@
+<h1>Signup For Articles App</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Username" %><br>
+    <%= form.text_field :name, placeholder: "Enter Username" %>
+  </div>
+
+  <% if @user && @user.errors[:name].any? %>
+    <div style="color: #721c24; margin-right: 110px;">
+      <ul>
+        <li>Name <%= @user.errors[:name].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.text_field :email, placeholder: "Enter Your Email" %>
+  </div>
+
+  <% if @user && @user.errors[:email].any? %>
+    <div style="color: #856404; margin-right: 110px;">
+      <ul>
+        <li>Email: <%= @user.errors[:email].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password, placeholder: "Enter Password" %>
+  </div>
+
+  <% if @user && @user.errors[:password].any? %>
+    <div style="color: #dc3545; margin-right: 110px;">
+      <ul>
+        <li>Password <%= @user.errors[:password].first %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit "Create Account" %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to "Back To All Articles", articles_path %>
