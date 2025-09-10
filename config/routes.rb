@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-get "signup", to: "users#new"
-resources :users, expect: [:new]
+  root 'pages#index'
+
+resources :users
+
 resources :articles
-root "articles#index"
+# root "articles#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
