@@ -1,0 +1,43 @@
+=> 
+[[32m#<User:0x00005864a78bac68[0m
+  id: [34m[1m1[0m,
+  name: [31m[1m"[0m[31mRayees[0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayees12@gmail.com[0m[31m[1m"[0m,
+  created_at: Tue, 09 Sep 2025 10:11:46.569378000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 05:48:01.933165000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m,
+ [32m#<User:0x00005864a78b2f18[0m
+  id: [34m[1m2[0m,
+  name: [31m[1m"[0m[31mRayees Riyaz [0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayeesriyaz43@gmail.com[0m[31m[1m"[0m,
+  created_at: Wed, 10 Sep 2025 09:27:41.158859000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 09:27:41.158859000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m,
+ [32m#<User:0x00005864a78b2a68[0m
+  id: [34m[1m3[0m,
+  name: [31m[1m"[0m[31mRayees Riyaz[0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayeesriyaz123@gmail.com[0m[31m[1m"[0m,
+  created_at: Wed, 10 Sep 2025 09:33:51.757667000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 09:33:51.757667000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m,
+ [32m#<User:0x00005864a78b2810[0m
+  id: [34m[1m4[0m,
+  name: [31m[1m"[0m[31msss[0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayeesriyaz222222@gmail.com[0m[31m[1m"[0m,
+  created_at: Wed, 10 Sep 2025 10:02:38.008563000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 11:35:34.350038000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m,
+ [32m#<User:0x00005864a78b2540[0m
+  id: [34m[1m5[0m,
+  name: [31m[1m"[0m[31mfarhan[0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayeesriyaz33@gmail.com[0m[31m[1m"[0m,
+  created_at: Wed, 10 Sep 2025 10:17:37.082905000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 10:17:37.082905000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m,
+ [32m#<User:0x00005864a78b22e8[0m
+  id: [34m[1m6[0m,
+  name: [31m[1m"[0m[31mfarhan riyaz[0m[31m[1m"[0m,
+  email: [31m[1m"[0m[31mrayeesriyaz3@gmail.com[0m[31m[1m"[0m,
+  created_at: Wed, 10 Sep 2025 10:28:01.556815000 UTC +00:00,
+  updated_at: Wed, 10 Sep 2025 10:28:01.556815000 UTC +00:00,
+  password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m]
