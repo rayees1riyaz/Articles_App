@@ -202,3 +202,132 @@ td a i { margin-right:6px; }
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   opacity: 0.9;
 }
+/* Pagination container */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 8px; /* spacing between items */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Pagination links (numbers and prev/next) */
+.pagination a,
+.pagination span,
+.pagination em {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  color: #007bff;
+  text-decoration: none;
+  border-radius: 30px; /* pill shape */
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+/* Hover effect */
+.pagination a:hover {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Current (active) page */
+.pagination .current,
+.pagination em.current {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  border-color: #0056b3;
+  font-weight: bold;
+  cursor: default;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Center the form container */
+.login-container {
+  width: 350px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+/* Title style */
+.login-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Form groups spacing */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input fields */
+.form-control {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* Submit button */
+.btn-login {
+  width: 10%;
+  padding: 10px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  background: white;
+  color: #6a11cb;
+  border-radius: 20px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #2575fc;
+  color: white;
+  transform: translateY(-2px);
+}

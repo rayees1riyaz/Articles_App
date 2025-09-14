@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>ArticlesApp</title>
@@ -11,10 +11,28 @@
 </head>
 <body>
   <!-- Top Navigation -->
-  <header style="background:linear-gradients/new(90deg,#6a11cb,#2575fc); padding:15px 0;">
+  <header style="background:linear-gradient(90deg,#6a11cb,#2575fc); padding:15px 0;">
     <nav style="max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:0 20px;">
       <h2 style="color:white; margin:0; font-family:'Segoe UI',sans-serif;">ArticlesApp</h2>
-   
+
+      <div class="nav-links">
+        <% if logged_in?%>
+        
+      
+       
+          <%= link_to "All Users", users_path, class: "nav-btn" %>
+            <%= link_to "All Articles", articles_path, class: "nav-btn" %>
+            <%= link_to current_user.name, user_path(current_user), class: "nav-btn"%>
+          <%= link_to "Logout", logout_path, method: :delete, class: "nav-btn" %>
+            <%else%>
+         <%= link_to "Login", login_path, class: "nav-btn" %>
+         <%= link_to "Signup", new_user_path, class: "nav-btn" %>
+          <%= link_to "All Articles", articles_path, class: "nav-btn" %>  
+        
+          <%end%>
+        
+           
+      </div>
     </nav>
   </header>
 

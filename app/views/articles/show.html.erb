@@ -1,7 +1,6 @@
 
-
 <h1>Article Details</h1>
- <%= @article.user.name if @article.user%>
+  <td data-label="User"> <%=link_to"See All Articles of #{@article.user.name}",user_path(@article.user) %></td>
 <p>
   <strong>ID:</strong>
   <%= @article.id %>
