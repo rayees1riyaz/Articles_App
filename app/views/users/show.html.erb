@@ -1,51 +1,46 @@
-<h1><%= @user.name %> - Details</h1>
+<div class="user-show-card">
 
-<p><strong>User ID:</strong> <%= @user.id %></p>
-<p><strong>Username:</strong> <%= @user.name %></p>
-<%if logged_in? && @user == current_user%>
-<p><strong>Email:</strong> <%= @user.email %></p>
+  <!-- User Info -->
+  <div class="user-info">
+    <div class="user-avatar"><%= @user.name[0].upcase %></div>
+    <div>
 
-
-
-  <%= link_to "<i class='fas fa-pencil-alt'></i> Edit".html_safe, edit_user_path(@user), class: "action-link" %> 
-  <%end%>
-<h2>Articles by <%= @user.name %>:</h2>
-
-<% if @articles.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @articles.each do |article| %>
-        <tr>
-          <td data-label="Title"><%= article.name %></td>
-          <td data-label="Description"><%= article.description %></td>
-          <td data-label="Actions">
-            <%= link_to "<i class='fas fa-eye'></i> Show".html_safe, article_path(article), class: "action-link" %> 
-            <% if logged_in? && article.user == current_user%>
-            <%= link_to "<i class='fas fa-pencil-alt'></i> Edit".html_safe, edit_article_path(article), class: "action-link" %> |
-            <%= link_to article_path(article), 
-                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
-                        class: "delete-link" do %>
-              <i class="fas fa-trash"></i> Delete
-              <%end%>
-            <% end %>
-          </td>
-        </tr>
-
+      <p><strong>Username:</strong> <%= @user.name %></p>
+      <% if logged_in? && @user == current_user %>
+        <p><strong>Email:</strong> <%= @user.email %></p>
+        <%= link_to "✏️ Edit Profile", edit_user_path(@user), class: "action-link edit-link" %>
       <% end %>
-    </tbody>
-            
-  </table>
-  <br>
+    </div>
+  </div>
 
-<% else %>
-  <p>No articles found for this user. <%= link_to "<i class='fas fa-plus'></i> Create New Article".html_safe, new_article_path %></p>
-<% end %>
-<%= link_to "<i class='fas fa-plus'></i> All Articles".html_safe, articles_path, class: "new-article-link" %>
+  <!-- User Articles -->
+  <h2 class="articles-title">Your Posts</h2>
+
+  <% if @articles.any? %>
+    <div class="articles-grid">
+      <% @articles.each do |article| %>
+        <div class="article-card">
+          <h3 class="article-title"><%= article.name %></h3>
+          <p class="article-desc"><%= article.description %></p>
+          <div class="article-actions">
+            <%= link_to "👁 Show", article_path(article), class: "action-link show-link" %>
+            <% if logged_in? && article.user == current_user %>
+              <%= link_to "✏️ Edit", edit_article_path(article), class: "action-link edit-link" %>
+              <%= link_to "🗑 Delete", article_path(article), 
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                          class: "action-link delete-link" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No articles found for this user. <%= link_to "➕ Create New Article".html_safe, new_article_path, class: "new-article-link" %></p>
+  <% end %>
+
+  <!-- New Article Button -->
+  <div style="text-align:center; margin-top:20px;">
+    <%= link_to "➕ Create Article", new_article_path, class: "new-article-link" %>
+  </div>
+
+</div>

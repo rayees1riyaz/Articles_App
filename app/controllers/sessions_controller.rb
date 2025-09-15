@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     flash[:success] = "Login successfully"
     redirect_to articles_path
   else
-   
+    flash.now[:danger] = "Invalid email or password"
     render 'new', status: :unprocessable_entity
   end
 end

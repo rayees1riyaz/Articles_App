@@ -8,35 +8,112 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* General Body */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar */
+header {
+  background: linear-gradient(90deg, #36d1dc, #5b86e5);
+  padding: 15px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav h2 {
+      color: #fff;
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      min-height: 80vh;
+    }
+
+    /* Flash Messages */
+    .flash {
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      animation: flashFade 0.5s ease forwards;
+    }
+
+    .flash.notice { background-color: #36d1dc; }
+    .flash.alert { background-color: #ff416c; }
+
+    @keyframes flashFade {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-  <!-- Top Navigation -->
-  <header style="background:linear-gradient(90deg,#6a11cb,#2575fc); padding:15px 0;">
-    <nav style="max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:0 20px;">
-      <h2 style="color:white; margin:0; font-family:'Segoe UI',sans-serif;">ArticlesApp</h2>
 
+  <!-- Top Navigation -->
+  <header>
+    <nav>
+      <h2>ArticlesApp</h2>
       <div class="nav-links">
-        <% if logged_in?%>
-        
-      
-       
-          <%= link_to "All Users", users_path, class: "nav-btn" %>
-            <%= link_to "All Articles", articles_path, class: "nav-btn" %>
-            <%= link_to current_user.name, user_path(current_user), class: "nav-btn"%>
+        <% if logged_in? %>
+          <%= link_to "All Articles", articles_path, class: "nav-btn" %>
+          <%= link_to "Your Profile", user_path(current_user), class: "nav-btn" %>
           <%= link_to "Logout", logout_path, method: :delete, class: "nav-btn" %>
-            <%else%>
-         <%= link_to "Login", login_path, class: "nav-btn" %>
-         <%= link_to "Signup", new_user_path, class: "nav-btn" %>
-          <%= link_to "All Articles", articles_path, class: "nav-btn" %>  
+        <% else %>
+          <%= link_to "All Articles", articles_path, class: "nav-btn" %>
         
-          <%end%>
-        
-           
+        <% end %>
       </div>
     </nav>
   </header>
 
-  <main style="max-width:1200px; margin:30px auto; padding:0 15px;">
+  <!-- Main Content -->
+  <main>
     <% flash.each do |key, message| %>
       <div class="flash <%= key %>">
         <%= message %>
@@ -44,5 +121,6 @@
     <% end %>
     <%= yield %>
   </main>
+
 </body>
 </html>

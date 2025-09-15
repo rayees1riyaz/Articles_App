@@ -1,37 +1,42 @@
-<h1>Edit Your Personal Detials</h1>
+<div style="max-width:500px; margin:50px auto; background:#fff; padding:30px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
 
-<%= form_with model: @user, local: true do |form| %>
-  <div>
-    <%= form.label :name, "Username" %><br>
-    <%= form.text_field :name, placeholder: "Enter Username" %>
-  </div>
+  <h1 style="text-align:center; color:#2d3436; margin-bottom:25px; font-weight:bold;">✏️ Edit Your Personal Details</h1>
 
-  <% if  @user.errors[:name].any? %>
-    <div style="color: #721c24; margin-right: 110px;">
-      <ul>
-        <li>Name <%= @user.errors[:name].first %></li>
-      </ul>
+  <%= form_with model: @user, local: true do |form| %>
+
+    <!-- Username -->
+    <div style="margin-bottom:15px;">
+      <%= form.label :name, "Username", style:"font-weight:bold; display:block; margin-bottom:5px;" %>
+      <%= form.text_field :name, placeholder: "Enter Username", style:"width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :email %><br>
-    <%= form.text_field :email, placeholder: "Enter Your Email" %>
-  </div>
+    <% if @user.errors[:name].any? %>
+      <div style="color:#e74c3c; font-size:14px; margin-bottom:10px;">
+        <ul style="margin:0; padding-left:20px;">
+          <li>Name: <%= @user.errors[:name].first %></li>
+        </ul>
+      </div>
+    <% end %>
 
-  <% if @user.errors[:email].any? %>
-    <div style="color: #856404; margin-right: 110px;">
-      <ul>
-        <li>Email: <%= @user.errors[:email].first %></li>
-      </ul>
+    <!-- Email -->
+    <div style="margin-bottom:15px;">
+      <%= form.label :email, style:"font-weight:bold; display:block; margin-bottom:5px;" %>
+      <%= form.text_field :email, placeholder: "Enter Your Email", style:"width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;" %>
     </div>
+
+    <% if @user.errors[:email].any? %>
+      <div style="color:#e74c3c; font-size:14px; margin-bottom:10px;">
+        <ul style="margin:0; padding-left:20px;">
+          <li>Email: <%= @user.errors[:email].first %></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Submit & Cancel Buttons -->
+    <div style="margin-top:25px; display:flex; justify-content:center; gap:15px;">
+      <%= form.submit "Update Details", style:"background:#0984e3; color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s;" %>
+      <%= link_to "Cancel", user_path(@user), style:"color:#e74c3c; font-weight:bold; text-decoration:none; padding:12px 25px; border-radius:8px; border:1px solid #e74c3c; transition:0.3s;" %>
+    </div>
+
   <% end %>
-
-  
-  <div>
-    <%= form.submit "Update Detials" %>
-  </div>
-<% end %>
-
-<br>
-<%= link_to "Back To Your Profile", user_path(@user) %>
+</div>

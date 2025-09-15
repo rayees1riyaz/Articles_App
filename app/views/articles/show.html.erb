@@ -1,22 +1,31 @@
+<div class="article-show-card">
 
-<h1>Article Details</h1>
-  <td data-label="User"> <%=link_to"See All Articles of #{@article.user.name}",user_path(@article.user) %></td>
-<p>
-  <strong>ID:</strong>
-  <%= @article.id %>
-</p>
+  <!-- User Info -->
+  <% if @article.user %>
+    <div class="user-info">
+      <div class="user-avatar"><%= @article.user.name[0].upcase %></div>
+      <%= link_to @article.user.name, user_path(@article.user), class: "user-link" %>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.name %>
-</p>
+  <!-- Article Details -->
+  <div class="article-content">
+    <h1 class="article-title"><%= @article.name %></h1>
+    <p class="article-desc"><%= @article.description %></p>
+    <p><strong>Article ID:</strong> <%= @article.id %></p>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+  <!-- Actions -->
+  <div class="article-actions">
+    <%= link_to "⬅️ Back To All Articles", articles_path, class: "action-link show-link" %>
+    <% if logged_in? && @article.user == current_user %>
+      <div>
+        <%= link_to "✏️ Edit", edit_article_path(@article), class: "action-link edit-link" %>
+        <%= link_to "🗑 Delete", article_path(@article), 
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                    class: "action-link delete-link" %>
+      </div>
+    <% end %>
+  </div>
 
-<br>
-<%= link_to "Back To All Artciles", articles_path%>
-
-
+</div>

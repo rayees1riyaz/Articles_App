@@ -1,46 +1,56 @@
-<h1>New Article</h1>
+<div style="max-width:600px; margin:40px auto; background:#fff; padding:25px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
 
-<%= form_with model: @article, local: true do |form| %>
+  <h1 style="text-align:center; color:#2d3436; margin-bottom:25px; font-weight:bold;">📝 New Article</h1>
 
+  <!-- Show User Errors -->
   <% if @article.errors[:user].any? %>
-    <div style="color: red; margin-bottom: 10px;">
-      <ul>
-        <li><%= @article.errors[:user].first %></li>
+    <div style="background:#f8d7da; color:#721c24; border:1px solid #f5c6cb; padding:10px; margin-bottom:15px; border-radius:6px;">
+      <ul style="margin:0; padding-left:20px;">
+        <% @article.errors[:user].each do |msg| %>
+          <li>
+            User <%= msg %> — 
+            <%= link_to "Create an account", new_user_path, style: "color:#0c5460; font-weight:bold; text-decoration:underline;" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, "Title" %><br>
-    <%= form.text_field :name, placeholder: "Enter title" %>
-  </div>
+  <%= form_with model: @article, local: true do |form| %>
 
-  <% if @article.errors[:name].any? %>
-    <div style="color: #721c24; margin-right: 110px;">
-      <ul>
-        <li>Title: <%= @article.errors[:name].first %></li>
-      </ul>
+    <!-- Title -->
+    <div style="margin-bottom:15px;">
+      <%= form.label :name, "Title", style:"font-weight:bold; display:block; margin-bottom:5px;" %>
+      <%= form.text_field :name, placeholder: "Enter title", style:"width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, placeholder: "Enter description", rows: 5 %>
-  </div>
+    <% if @article.errors[:name].any? %>
+      <div style="color:#e74c3c; font-size:14px; margin-bottom:10px;">
+        <ul style="margin:0; padding-left:20px;">
+          <li>Title: <%= @article.errors[:name].first %></li>
+        </ul>
+      </div>
+    <% end %>
 
-  <% if @article.errors[:description].any? %>
-    <div style="color: #856404; margin-right: 110px;">
-      <ul>
-        <li>Description: <%= @article.errors[:description].first %></li>
-      </ul>
+    <!-- Description -->
+    <div style="margin-bottom:15px;">
+      <%= form.label :description, nil, style:"font-weight:bold; display:block; margin-bottom:5px;" %>
+      <%= form.text_area :description, placeholder: "Enter description", rows: 6, style:"width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;" %>
     </div>
+
+    <% if @article.errors[:description].any? %>
+      <div style="color:#e74c3c; font-size:14px; margin-bottom:10px;">
+        <ul style="margin:0; padding-left:20px;">
+          <li>Description: <%= @article.errors[:description].first %></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Submit & Cancel Buttons -->
+    <div style="margin-top:25px; display:flex; justify-content:center; gap:15px;">
+      <%= form.submit "Create Article", style:"background:#0984e3; color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s;" %>
+      <%= link_to "Cancel", articles_path, style:"color:#e74c3c; font-weight:bold; text-decoration:none; padding:12px 25px; border-radius:8px; border:1px solid #e74c3c; transition:0.3s;" %>
+    </div>
+
   <% end %>
-
-  <div>
-    <%= form.submit "Create Article" %>
-  </div>
-
-<% end %>
-
-<br>
-<%= link_to "Back To All Articles", articles_path %>
+</div>

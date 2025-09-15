@@ -1,4 +1,74 @@
-<div class="welcome-container">
-  <h1>Welcome To Articles App</h1>
-  <p class="subtitle">Create, Read, and Share Articles with Ease!</p>
+<div style="max-width:700px; margin:80px auto; padding:60px 40px; 
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius:25px; text-align:center; 
+            box-shadow:0 20px 50px rgba(0,0,0,0.25); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow:hidden;">
+
+  <h1 style="font-size:50px; color:#fff; font-weight:bold; margin-bottom:30px; 
+             text-shadow:2px 2px 12px rgba(0,0,0,0.3);">
+    🔐 Login
+  </h1>
+
+  <p style="font-size:20px; color:#fff; margin-bottom:40px; 
+            text-shadow:1px 1px 6px rgba(0,0,0,0.3); line-height:1.5;">
+    Welcome back! Enter your details to access your account.
+  </p>
+
+  <!-- Login Form -->
+  <%= form_with(scope: :session, url: login_path, local: true, style:"text-align:left; max-width:400px; margin:0 auto;") do |form| %>
+    
+    <div style="margin-bottom:20px;">
+      <%= form.label :email, style:"color:#fff; font-weight:bold;" %><br>
+      <%= form.email_field :email, placeholder: "Enter your email", 
+            style:"width:100%; padding:12px; border-radius:8px; border:none; font-size:16px;" %>
+    </div>
+
+    <div style="margin-bottom:25px;">
+      <%= form.label :password, style:"color:#fff; font-weight:bold;" %><br>
+      <%= form.password_field :password, placeholder: "Enter your password", 
+            style:"width:100%; padding:12px; border-radius:8px; border:none; font-size:16px;" %>
+    </div>
+
+    <div style="text-align:center; margin-bottom:20px;">
+      <%= form.submit "Login", 
+            style:"padding:14px 40px; background: linear-gradient(135deg, #36d1dc, #5b86e5); 
+                   color:white; font-weight:bold; font-size:18px; 
+                   border-radius:50px; border:none; cursor:pointer;
+                   box-shadow:0 8px 25px rgba(0,0,0,0.25); transition: all 0.3s ease;" %>
+    </div>
+
+  <% end %>
+
+  <!-- Signup link -->
+  <p style="color:#fff; font-size:16px; margin-top:10px;">
+    Don't have an account? 
+    <%= link_to "Create Account", new_user_path, style:"color:#ff416c; font-weight:bold; text-decoration:underline;" %>
+  </p>
+
 </div>
+
+<script>
+  // Container hover
+  const container = document.currentScript.previousElementSibling;
+  container.addEventListener('mouseover', () => {
+    container.style.transform = 'scale(1.02)';
+    container.style.boxShadow = '0 25px 50px rgba(0,0,0,0.35)';
+  });
+  container.addEventListener('mouseout', () => {
+    container.style.transform = 'scale(1)';
+    container.style.boxShadow = '0 20px 50px rgba(0,0,0,0.25)';
+  });
+
+  // Buttons hover
+  document.querySelectorAll('input[type="submit"]').forEach(btn => {
+    btn.addEventListener('mouseover', () => {
+      btn.style.transform = 'translateY(-3px)';
+      btn.style.boxShadow = '0 12px 30px rgba(0,0,0,0.3)';
+    });
+    btn.addEventListener('mouseout', () => {
+      btn.style.transform = 'translateY(0)';
+      btn.style.boxShadow = '0 8px 25px rgba(0,0,0,0.25)';
+    });
+  });
+</script>

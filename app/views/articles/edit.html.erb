@@ -1,34 +1,43 @@
-<h1>Edit Article</h1>
-<%= form_with model: @article, local: true do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :name, placeholder: "Enter title" %>
-  </div>
-<% if @article.errors[:title].any? %>
-  <div style="color: #721c24; margin-right: 110px;">  
-    <ul>
-      <li>Title: <%= @article.errors[:name].first %></li>
+<div style="max-width:600px; margin:50px auto; background:#ffffff; padding:30px 35px; border-radius:20px; 
+            box-shadow:0 15px 35px rgba(0,0,0,0.2); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
-    </ul>
-  </div>
-<% end %>
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, placeholder: "Enter description", rows: 5 %>
-  </div>
-  <% if @article.errors[:description].any? %>
-  <div style="color: #856404; margin-right: 110px;">
-     <ul>
-  <li>Description: <%= @article.errors[:description].first %></li>
+  <h1 style="text-align:center; color:#2d3436; margin-bottom:30px; font-weight:900; font-size:32px; text-shadow:1px 1px 2px rgba(0,0,0,0.05);">
+    ✏️ Edit Article
+  </h1>
 
-    </ul>
-  </div>
-<% end %>
+  <%= form_with model: @article, local: true do |form| %>
 
-  <div>
-    <%= form.submit "Update Article" %>
-  </div>
-<% end %>
+    <!-- Title -->
+    <div style="margin-bottom:20px;">
+      <%= form.label :name, "Title", style:"font-weight:bold; display:block; margin-bottom:8px; color:#2c3e50;" %>
+      <%= form.text_field :name, placeholder: "Enter article title", style:"width:100%; padding:12px; border:1px solid #ccc; border-radius:12px; font-size:15px; transition:0.3s;" %>
+    </div>
 
-<br>
-<%= link_to "Back To All Artciles", articles_path%>
+    <% if @article.errors[:name].any? %>
+      <div style="color:#c0392b; font-size:14px; margin-bottom:15px; padding-left:8px;">
+        <%= @article.errors[:name].first %>
+      </div>
+    <% end %>
+
+    <!-- Description -->
+    <div style="margin-bottom:20px;">
+      <%= form.label :description, nil, style:"font-weight:bold; display:block; margin-bottom:8px; color:#2c3e50;" %>
+      <%= form.text_area :description, placeholder: "Enter description", rows:6, style:"width:100%; padding:12px; border:1px solid #ccc; border-radius:12px; font-size:15px; transition:0.3s;" %>
+    </div>
+
+    <% if @article.errors[:description].any? %>
+      <div style="color:#c0392b; font-size:14px; margin-bottom:15px; padding-left:8px;">
+        <%= @article.errors[:description].first %>
+      </div>
+    <% end %>
+
+    <!-- Submit & Cancel -->
+    <div style="margin-top:25px; display:flex; justify-content:center; gap:20px;">
+      <%= form.submit "Update Article", style:"background:linear-gradient(135deg,#6a11cb,#2575fc); color:white; padding:12px 30px; border:none; border-radius:12px; cursor:pointer; font-weight:bold; font-size:16px; box-shadow:0 5px 15px rgba(0,0,0,0.15); transition:0.3s;" %>
+    <%= link_to "Cancel", user_path(current_user), style:"color:#e74c3c; font-weight:bold; text-decoration:none; padding:12px 30px; border-radius:12px; border:1px solid #e74c3c; transition:0.3s;" %>
+
+    </div>
+
+  <% end %>
+
+</div>
