@@ -1,13 +1,48 @@
 <h1 class="page-title">📝 All Articles</h1>
 
+<style>
+.user-avatar-link {
+  text-decoration: none;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.see-more {
+  color: #5b86e5;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+</style>
+
 <div class="articles-grid">
   <% @articles.each do |article| %>
     <div class="article-card">
-      
+
       <!-- User Info -->
       <% if article.user %>
         <div class="user-info">
-          <div class="user-avatar"><%= article.user.name[0].upcase %></div>
+          <%= link_to user_path(article.user), class: "user-avatar-link" do %>
+            <div class="user-avatar"><%= article.user.name[0].upcase %></div>
+          <% end %>
           <%= link_to article.user.name, user_path(article.user), class: "user-link" %>
         </div>
       <% end %>
@@ -15,7 +50,16 @@
       <!-- Article Content -->
       <div class="article-content">
         <h2 class="article-title"><%= article.name %></h2>
-        <p class="article-desc"><%= article.description %></p>
+
+        <%# Update truncation logic for 25 words %>
+        <% description_text = article.description.to_s.strip %>
+        <% words = description_text.split(/\s+/) %>
+        <p class="article-desc">
+          <%= words.first(25).join(" ") %>
+          <% if words.size > 25 %>
+            <%= link_to " See more", article_path(article), class: "see-more" %>
+          <% end %>
+        </p>
       </div>
 
       <!-- Actions -->
@@ -30,6 +74,7 @@
           </div>
         <% end %>
       </div>
+
     </div>
   <% end %>
 </div>
@@ -41,32 +86,15 @@
 
 <!-- New Article Button -->
 <div class="new-article-btn">
-  <% if logged_in?%>
-  <%= link_to "➕ New Article", new_article_path, class: "new-article-link" %>
+  <% if logged_in? %>
+    <%= link_to "➕ New Article", new_article_path, class: "new-article-link" %>
   <% else %>
-<%= link_to "Login Here", login_path, 
-    style: "display:inline-block; padding:12px 30px; 
-            background: linear-gradient(135deg, #36d1dc, #5b86e5); 
-            color:white; font-weight:bold; font-size:18px; 
-            border-radius:30px; text-decoration:none; 
-            box-shadow:0 6px 18px rgba(0,0,0,0.2); 
-            transition:all 0.3s ease;" %>
-
-<script>
-  // Hover animation
-  document.querySelectorAll('a').forEach(btn => {
-    if (btn.textContent.includes("Login Here")) {
-      btn.addEventListener('mouseover', () => {
-        btn.style.transform = "translateY(-3px)";
-        btn.style.boxShadow = "0 10px 25px rgba(0,0,0,0.3)";
-      });
-      btn.addEventListener('mouseout', () => {
-        btn.style.transform = "translateY(0)";
-        btn.style.boxShadow = "0 6px 18px rgba(0,0,0,0.2)";
-      });
-    }
-  });
-</script>
-  <%end%>
-
+    <%= link_to "Login Here", login_path, 
+        style: "display:inline-block; padding:12px 30px; 
+                background: linear-gradient(135deg, #36d1dc, #5b86e5); 
+                color:white; font-weight:bold; font-size:18px; 
+                border-radius:30px; text-decoration:none; 
+                box-shadow:0 6px 18px rgba(0,0,0,0.2); 
+                transition:all 0.3s ease;" %>
+  <% end %>
 </div>
