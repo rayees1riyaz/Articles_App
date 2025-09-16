@@ -41,5 +41,32 @@
 
 <!-- New Article Button -->
 <div class="new-article-btn">
+  <% if logged_in?%>
   <%= link_to "➕ New Article", new_article_path, class: "new-article-link" %>
+  <% else %>
+<%= link_to "Login Here", login_path, 
+    style: "display:inline-block; padding:12px 30px; 
+            background: linear-gradient(135deg, #36d1dc, #5b86e5); 
+            color:white; font-weight:bold; font-size:18px; 
+            border-radius:30px; text-decoration:none; 
+            box-shadow:0 6px 18px rgba(0,0,0,0.2); 
+            transition:all 0.3s ease;" %>
+
+<script>
+  // Hover animation
+  document.querySelectorAll('a').forEach(btn => {
+    if (btn.textContent.includes("Login Here")) {
+      btn.addEventListener('mouseover', () => {
+        btn.style.transform = "translateY(-3px)";
+        btn.style.boxShadow = "0 10px 25px rgba(0,0,0,0.3)";
+      });
+      btn.addEventListener('mouseout', () => {
+        btn.style.transform = "translateY(0)";
+        btn.style.boxShadow = "0 6px 18px rgba(0,0,0,0.2)";
+      });
+    }
+  });
+</script>
+  <%end%>
+
 </div>

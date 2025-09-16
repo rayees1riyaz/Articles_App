@@ -9,6 +9,11 @@
       <% if logged_in? && @user == current_user %>
         <p><strong>Email:</strong> <%= @user.email %></p>
         <%= link_to "✏️ Edit Profile", edit_user_path(@user), class: "action-link edit-link" %>
+  <%= link_to "Logout", user_path(current_user), 
+    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "action-link delete-link" %>
+    
+
+
       <% end %>
     </div>
   </div>
@@ -38,9 +43,6 @@
     <p>No articles found for this user. <%= link_to "➕ Create New Article".html_safe, new_article_path, class: "new-article-link" %></p>
   <% end %>
 
-  <!-- New Article Button -->
-  <div style="text-align:center; margin-top:20px;">
-    <%= link_to "➕ Create Article", new_article_path, class: "new-article-link" %>
-  </div>
+      <%= link_to "⬅️ Back To All Articles", articles_path, class: "action-link show-link" %>
 
 </div>

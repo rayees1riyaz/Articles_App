@@ -103,7 +103,9 @@ header {
         <% if logged_in? %>
           <%= link_to "All Articles", articles_path, class: "nav-btn" %>
           <%= link_to "Your Profile", user_path(current_user), class: "nav-btn" %>
-          <%= link_to "Logout", logout_path, method: :delete, class: "nav-btn" %>
+       <%= link_to "Logout", logout_path, 
+    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "nav-btn" %>
+
         <% else %>
           <%= link_to "All Articles", articles_path, class: "nav-btn" %>
         
