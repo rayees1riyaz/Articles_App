@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 root 'pages#index'
-resources :users
-resources :articles
 
-get 'login', to: 'sessions#new'
-post 'login', to: 'sessions#create'
-delete 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :users
+  resources :articles
 
+  get    'login',  to: 'sessions#new'
+  post   'login',  to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
 # root "articles#index"
 
