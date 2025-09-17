@@ -18,8 +18,11 @@
     </div>
   </div>
 
-  <!-- User Articles -->
-  <h2 class="articles-title">Your Posts</h2>
+  <% if logged_in? && @user == current_user %>
+   <h2 class="articles-title">Your Posts</h2>
+<% else%>
+<h2 class="articles-title"><%=@user.name%>: Posts</h2> 
+<%end%>
 
   <% if @articles.any? %>
     <div class="articles-grid">
