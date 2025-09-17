@@ -9,7 +9,7 @@
       <% if logged_in? && @user == current_user %>
         <p><strong>Email:</strong> <%= @user.email %></p>
         <%= link_to "✏️ Edit Profile", edit_user_path(@user), class: "action-link edit-link" %>
-  <%= link_to "Logout", user_path(current_user), 
+  <%= link_to "Delete Your Profile", user_path(current_user), 
     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "action-link delete-link" %>
     
 
