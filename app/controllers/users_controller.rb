@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  # render json: @users
   end
 
   def show
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
+# render json: @user
   end
 
   def new
